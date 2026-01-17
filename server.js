@@ -123,7 +123,7 @@ app.get("/api/shield", (req, res) => {
   res.json({ data: shieldState });
 });
 
-const renderShieldWidget = (req, res) => {
+app.get("/widget/shield", (req, res) => {
   const label = req.query.label || "Shield Count";
   const refreshSeconds = Number(req.query.refreshSeconds ?? 5);
   const refreshInterval = Number.isNaN(refreshSeconds) || refreshSeconds < 1 ? 5 : refreshSeconds;
@@ -185,10 +185,7 @@ const renderShieldWidget = (req, res) => {
     </div>
   </body>
 </html>`);
-};
-
-app.get("/widget/shield", renderShieldWidget);
-app.get("/widget/shield.html", renderShieldWidget);
+});
 
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console
