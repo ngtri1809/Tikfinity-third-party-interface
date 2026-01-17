@@ -1,0 +1,12 @@
+{
+  "name": "tikfinity-third-party-interface",
+  "version": "1.0.0",
+  "description": "Third-party interface for TikFinity to track shield milestones.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
