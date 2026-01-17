@@ -125,6 +125,21 @@ app.get("/api/shield", (req, res) => {
   res.json({ data: shieldState });
 });
 
+const updateShieldCount = (delta) => {
+  shieldState.count = Math.max(0, shieldState.count + delta);
+  shieldState.lastUpdatedAt = new Date().toISOString();
+};
+
+app.post("/api/shield/increment", (req, res) => {
+  updateShieldCount(1);
+  res.json({ data: shieldState, message: "Shield counter incremented." });
+});
+
+app.post("/api/shield/decrement", (req, res) => {
+  updateShieldCount(-1);
+  res.json({ data: shieldState, message: "Shield counter decremented." });
+});
+
 app.get("/widget/shield", (req, res) => renderShieldWidget(req, res, shieldState));
 app.get("/widget/shield.html", (req, res) => renderShieldWidget(req, res, shieldState));
 
